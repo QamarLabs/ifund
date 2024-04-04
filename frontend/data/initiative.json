@@ -1,0 +1,67 @@
+{
+    "totalFunded": 100000,
+    "totalFunders": 10000,
+    "name": "Home loans near the Cleveland",
+    "description": "Distribution of low profit, home loans for homes primarily outside of the cleveland metropolitan area. The purpose is build a muslim village.",
+    "leader": {
+        "name": "Ali Alhaddad",
+        "email": "test@gmail.com",
+        "avatar": "/images/user/user-02.png"
+    },
+    "organization": {
+        "name": "IRUSA",
+        "logo": "/images/organization/irusa.png",
+        "basedIn": "Detroit, MI, USA"
+    },
+    "servicesProvided": [
+        "Distribution of low profit home loans",
+        "Legal and technological services for fund distribution",
+        "Export services for fund distribution"
+    ],
+    "initiative": {
+        "category": "Financial Trust",
+        "wayOfDistribution": "Loans",
+        "breakdown": {
+            "items": [
+                {
+                    "description": "Paid government taxes",
+                    "amount": "Cannot disclose"
+                },
+                {
+                    "description": "Employee salaries",
+                    "amount": 10000
+                },
+                {
+                    "description": "Legal services to distribute funds",
+                    "amount": 1200
+                },
+                {
+                    "description": "Export services to distribute funds",
+                    "amount": 100
+                },
+                {
+                    "description": "Technological services to distribute funds",
+                    "amount": 1500
+                }
+            ]
+        },
+        "organizationStarted": "2019-01-01",
+        "currentReputation": "Great",
+        "recentActivity": [
+            {
+                "id": 1,
+                "type": "distribution",
+                "description": "Distributed Loan to funders",
+                "date": "2024-03-20"
+            },
+            {
+                "id": 2,
+                "type": "finishedFunding",
+                "description": "Funding of initiative has been closed",
+                "date": "2024-03-10"
+            }
+        ],
+        "location": "Cleveland, OH, USA",
+        "countryOfOrigin": "United States"
+    }
+}

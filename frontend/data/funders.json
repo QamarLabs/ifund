@@ -1,0 +1,87 @@
+{
+    "accountInfo": {
+        "email": "test12345@gmail.com",
+        "name": "Ali Alhaddad",
+        "residence": "Tampa, FL, USA",
+        "phoneNumber": "123456789",
+        "socials": {
+            "facebook": "",
+            "linkedin": "",
+            "twitter": ""
+        }
+    },
+    "totalProfitReceieved": 100,
+    "investments": [
+        {
+            "totalAmountFunded": 100,
+            "profitReceived": 0,
+            "companyInfo": {
+                "name": "Your Investment Company",
+                "location": "New York, NY, USA",
+                "industry": "Finance",
+                "website": "www.yourinvestmentcompany.com"
+            }
+        },
+        {
+            "totalAmountFunded": 1000,
+            "profitReceived": 100,
+            "companyInfo": {
+                "name": "Your Investment Company 2",
+                "location": "Phoenix, AZ, USA",
+                "industry": "Finance",
+                "website": "www.yourinvestmentcompany.com"
+            }
+        }
+    ],
+    "initiatives": [
+        {
+            "name": "Home loans near the Cleveland",
+            "description": "Distribution of low-profit home loans for homes primarily outside of the Cleveland metropolitan area. The purpose is to build a Muslim village.",
+            "fundedDate": "03-01-2024",
+            "createdDate": "01-01-2024",
+            "totalFunded": 50000,
+            "category": "Financial Trust",
+            "distributionType": "Loans",
+            "breakdown": {
+                "items": [
+                    {
+                        "description": "Paid government taxes",
+                        "amount": "Cannot disclose"
+                    },
+                    {
+                        "description": "Employee salaries",
+                        "amount": 10000
+                    },
+                    {
+                        "description": "Legal services to distribute funds",
+                        "amount": 1200
+                    },
+                    {
+                        "description": "Export services to distribute funds",
+                        "amount": 100
+                    },
+                    {
+                        "description": "Technological services to distribute funds",
+                        "amount": 1500
+                    }
+                ]
+            },
+            "organization": "IRUSA",
+            "reputation": "Great",
+            "recentActivity": [
+                {
+                    "id": 3,
+                    "type": "distribution",
+                    "description": "Distributed Loan to funders",
+                    "date": "03-20-2024"
+                },
+                {
+                    "id": 2,
+                    "type": "finishedFunding",
+                    "description": "Funding of initiative has been closed",
+                    "date": "03-10-2024"
+                }
+            ]
+        }
+    ]
+}

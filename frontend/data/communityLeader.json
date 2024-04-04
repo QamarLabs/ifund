@@ -1,0 +1,71 @@
+{
+    "numberOfFunders": 100000,
+    "totalAmountFunded": 1000000,
+    "previousInitiatives": [
+        {
+            "name": "Home loans near the Cleveland",
+            "description": "Distribution of low profit, home loans for homes primarily outside of the cleveland metropolitan area. The purpose is build a muslim village.",
+            "fundedDate": "03-01-2024",
+            "createdDate": "01-01-2024",
+            "totalFunded": 50000,
+            "category": "Financial Trust",
+            "distributionType": "loans",
+            "breakdown": {
+                "items": [
+                    {
+                        "description": "Paid government taxes",
+                        "amount": "Cannot disclosed"
+                    },
+                    {
+                        "description": "Employee salaries",
+                        "amount": 10000
+                    },
+                    {
+                        "description": "Legal services to distribute funds",
+                        "amount": 1200
+                    },
+                    {
+                        "description": "Export services to distribute funds",
+                        "amount": 100
+                    },
+                    {
+                        "description": "Technological services to distribute funds",
+                        "amount": 1500
+                    }
+                ]
+            },
+            "organization": "IRUSA",
+            "reputation": "Great",
+            "recentActivity": [
+                {
+                    "id": 3,
+                    "type": "distribution",
+                    "description": "Distributed Loan to funders",
+                    "date": "03-20-2024"
+                },
+                {
+                    "id": 2,
+                    "type": "finishedFunding",
+                    "description": "Funding of initiative has been closed",
+                    "date": "03-10-2024"
+                }
+            ]
+        }
+    ],
+    "currentInitiatives": [],
+    "preferredDistributionType": "loans",
+    "averageFundedPerIntitiative": 33000,
+    "accountInfo": {
+        "email": "test12345@gmail.com",
+        "name": "Ali Alhaddad",
+        "avatar": "/images/user/user.png",
+        "residence": "Tampa, FL, USA",
+        "countryOfResidence": "United States",
+        "phoneNumber": "123456789",
+        "socials": {
+            "facebook": "test@facebook.com",
+            "linkedin": "test@linkedin.com1",
+            "twitter": "test@twitter.com"
+        }
+    }
+}

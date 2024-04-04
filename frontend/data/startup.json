@@ -1,0 +1,32 @@
+{
+    "totalRaised": 2000000,
+    "totalFunders": 25000,
+    "numberOfEmployees": 200,
+    "name": "Wahed",
+    "founder": {
+        "name": "Mohamad Alhaddad",
+        "email": "test12345@gmail.com"
+    },
+    "mainTeam": {
+        "ceo": "John Doe",
+        "cio": null,
+        "cmo": "Maryem Jalaledeen"
+    },
+    "servicesProvided": [
+        "Distribution of low profit home loans",
+        "Legal and technological services for fund distribution",
+        "Export services for fund distribution"
+    ],
+    "totalAmountRaised": 1200000,
+    "averageRaisedPerRound": 3000000,
+    "lastDistributionInProfits": "Cannot disclosed",
+    "meetupScheduled": {
+        "date": "2024-04-10",
+        "location": "Online"
+    },
+    "isActive": true,
+    "isPublic": false,
+    "totalEmployees": 1,
+    "residence": "Tampa, FL, USA",
+    "countryOfResidence": "United States"
+}

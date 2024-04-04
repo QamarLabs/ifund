@@ -1,0 +1,116 @@
+{
+    "numberOfFunders": 1000000,
+    "totalAmountRaised": 10000000,
+    "previousFundingRounds": [
+        {
+            "type": "Series A",
+            "description": "Initial Funding of Startup",
+            "fundedDate": "02-01-2024",
+            "createdDate": "01-01-2024",
+            "totalFunded": 150000,
+            "category": "FinTech",
+            "organization": "Wahed",
+            "recentActivity": [
+                {
+                    "id": 3,
+                    "type": "Completed Series A Fundimg",
+                    "description": "close series a funding from investors",
+                    "date": "02-01-2024"
+                },
+                {
+                    "id": 2,
+                    "type": "Started Raising for Series A",
+                    "description": "Started raising funds for series A.",
+                    "date": "01-01-2024"
+                }
+            ]
+        },
+        {
+            "type": "Seed",
+            "description": "Initial Funding of Startup",
+            "fundedDate": "01-01-2024",
+            "createdDate": "10-01-2023",
+            "totalFunded": 150000,
+            "category": "FinTech",
+            "organization": "Startup 2",
+            "recentActivity": [
+                {
+                    "id": 3,
+                    "type": "Completed Seed Fundimg",
+                    "description": "close Seed funding from investors",
+                    "date": "10-01-2024"
+                },
+                {
+                    "id": 2,
+                    "type": "Started Raising for Seed",
+                    "description": "Started raising funds for Seed.",
+                    "date": "01-01-2023"
+                }
+            ]
+        },
+        {
+            "type": "Seed",
+            "description": "Initial Funding of Startup 3",
+            "fundedDate": "02-01-2021",
+            "createdDate": "01-01-2020",
+            "totalFunded": 200000,
+            "category": "FinTech",
+            "organization": "Wahed",
+            "recentActivity": [
+                {
+                    "id": 3,
+                    "type": "Completed Seed Fundimg",
+                    "description": "close Seed funding from investors",
+                    "date": "02-01-2021"
+                },
+                {
+                    "id": 2,
+                    "type": "Started Raising for Seed",
+                    "description": "Started raising funds for Seed Funding.",
+                    "date": "01-01-2020"
+                }
+            ]
+        }
+    ],
+    "businesses": {
+        "items": [
+            {
+                "name": "Wahed",
+                "formationDate": "01-01-2023",
+                "totalAmountRaised": 35000000,
+                "isActive": true,
+                "isPublic": false,
+                "description": "Financial startup blah blah blah"
+            },
+            {
+                "name": "Startup 2",
+                "formationDate": "01-01-2020",
+                "totalAmountRaised": 35000000,
+                "isActive": true,
+                "isPublic": false,
+                "description": "Example startup 2 blah blah blah"
+            },
+            {
+                "name": "Startup 3",
+                "formationDate": "01-01-2019",
+                "totalAmountRaised": 35000000,
+                "isActive": true,
+                "isPublic": true,
+                "description": "Example startup 3 blah blah blahy"
+            }
+        ]
+    },
+    "averageRaisedPerRound": 3300000,
+    "accountInfo": {
+        "email": "test101010@gmail.com",
+        "name": "Mohamed Alhaddad",
+        "residence": "Tampa, FL, USA",
+        "countryOfResidence": "United States",
+        "phoneNumber": "1112223333",
+        "socials": {
+            "facebook": "",
+            "linkedin": "",
+            "twitter": ""
+        }
+    }
+}
