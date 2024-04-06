@@ -1,0 +1,12 @@
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.AssemblyInfoInputs.cache
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.AssemblyInfo.cs
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.csproj.CoreCompileInputs.cache
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.csproj.AssemblyReference.cache
+C:\Users\17275\pocs\fund-islam\fund-entities\bin\Debug\net7.0\fund-entities.deps.json
+C:\Users\17275\pocs\fund-islam\fund-entities\bin\Debug\net7.0\fund-entities.dll
+C:\Users\17275\pocs\fund-islam\fund-entities\bin\Debug\net7.0\fund-entities.pdb
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.dll
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\refint\fund-entities.dll
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\fund-entities.pdb
+C:\Users\17275\pocs\fund-islam\fund-entities\obj\Debug\net7.0\ref\fund-entities.dll

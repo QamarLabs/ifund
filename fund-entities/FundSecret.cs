@@ -1,21 +1,22 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace fund_entities
+namespace QamarLabs.Microservices.FundEntities
 {
     public class FundSecret
     {
         [JsonProperty("username", Required = Required.Always)]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [JsonProperty("password", Required = Required.Always)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         [JsonProperty("defaultDatabase", Required = Required.Always)]
-        public string DefaultDatabase { get; set; }
+        public string? DefaultDatabase { get; set; }
 
         public string ToSqlConnectionString(string hostAddress)
         {

@@ -1,9 +1,12 @@
-﻿namespace fund_entities
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+
+namespace QamarLabs.Microservices.FundEntities
 {
     public class FundCredentials
     {
         private IConfiguration Configuration { get; }
-        private IAmazonSecretsManager SecretsManager { get; }
+//        private IAmazonSecretsManager SecretsManager { get; }
 
         private FundSecret _Credentials = null;
 
@@ -18,6 +21,7 @@
                 // creds are being used before service could refresh the the creds
                 var fundConfig = Configuration.GetFundConfig();
 
+                /*
                 var secretRes = SecretsManager.GetSecretValueAsync(new GetSecretValueRequest
                 {
                     SecretId = fundConfig.SecretName
@@ -31,15 +35,18 @@
                     Username = creds.Username,
                     Password = creds.Password
                 };
+                */
 
                 return _Credentials;
             }
         }
 
-        public HalCredentials(IConfiguration configuration, IAmazonSecretsManager sm)
+        /*
+        public FundCredentials(IConfiguration configuration, IAmazonSecretsManager sm)
         {
             this.Configuration = configuration;
             this.SecretsManager = sm;
         }
+        */
     }
 }

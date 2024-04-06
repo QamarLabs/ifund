@@ -1,45 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using static QamarLabs.Microservices.FundEntities.ServiceBootstrap;
 
-namespace fund_entities
+namespace QamarLabs.Microservices.FundEntities
 {
-    public class FundContextFactory : IHalContextFactory, IDisposable
+    public class FundContextFactory : IFundContextFactory, IDisposable
     {
         private List<FundContext> Contexts { get; } = new List<FundContext>();
         private IConfiguration Configuration { get; }
         private FundCredentials FundCredentials { get; }
 
-        public FundContextFactory(IConfiguration config, HalCredentials halCredentials)
+        public FundContextFactory(IConfiguration config, FundCredentials fundCredentials)
         {
             this.Configuration = config;
-            this.HalCredentials = halCredentials;
+            this.FundCredentials = fundCredentials;
         }
 
         public FundContext CreateDbContext()
         {
-            var halConfig = Configuration.GetSection("FundConfig").Get<FundConfiguration>();
+            var fundConfig = Configuration.GetFundConfig() ?? JsonConvert.DeserializeObject<FundConfiguration>(Configuration.GetSection("FundConfig").Value ?? "") ?? new FundConfiguration();
 
             var creds = FundCredentials.Credentials;
 
-            var connectionString = string.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3};TrustServerCertificate=true;Encrypt=false",
-            halConfig.Host, creds.DefaultDatabase, creds.Username, creds.Password);
+            var connectionString = $"Host={fundConfig.Host};Database={creds.DefaultDatabase};Username={creds.Username};Password={creds.Password};Trust Server Certificate=true";
 
-            var options = new DbContextOptionsBuilder<HalContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<FundContext>()
+                .UseNpgsql(connectionString); // Use Npgsql for PostgreSQL
 
-            options.UseLazyLoadingProxies();
-            options.UseSqlServer(connectionString);
+            var fundContext = new FundContext(optionsBuilder.Options);
 
-            // currently bugged. doesnt play well with async code
-            options.AddXRayInterceptor();
+            Contexts.Add(fundContext);
 
-            var halContext = new FundContext(options.Options, null);
-
-            Contexts.Add(halContext);
-
-            return halContext;
+            return fundContext;
         }
 
         // implement async dispose eventually
