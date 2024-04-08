@@ -14,9 +14,20 @@ namespace QamarLabs.Microservices.FundEntities
             public string Host { get; set; }
         }
 
+        public class MongoDbConfiguration
+        {
+            public string Host { get; set; }
+            public string DatabaseName { get; set; }
+        }
+
         public static FundConfiguration? GetFundConfig(this IConfiguration configuration)
         {
             return JsonConvert.DeserializeObject<FundConfiguration>(configuration.GetSection("FundConfig").Value ?? "");
+        }
+
+        public static MongoDbConfiguration? GetMongoDbConfig(this IConfiguration configuration)
+        {
+            return JsonConvert.DeserializeObject<MongoDbConfiguration>(configuration.GetSection("MongoDbConfig").Value ?? "");
         }
 
         public static void AddFundContext(this IServiceCollection services, FundConfiguration fundConfig)
