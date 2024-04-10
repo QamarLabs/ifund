@@ -30,7 +30,7 @@ namespace QamarLabs.Microservices.FundEntities
             return JsonConvert.DeserializeObject<MongoDbConfiguration>(configuration.GetSection("MongoDbConfig").Value ?? "");
         }
 
-        public static void AddFundContext(this IServiceCollection services, FundConfiguration fundConfig)
+        public static void AddFundContext(this IServiceCollection services, FundConfiguration fundConfig, MongoDbConfiguration mongoConfig)
         {
 
             services.AddSingleton<FundWarmState>();
@@ -39,12 +39,19 @@ namespace QamarLabs.Microservices.FundEntities
 
             services.AddDbContext<FundContext>((sp, options) =>
             {
-                var creds = sp.GetService<FundCredentials>().Credentials;
-                var connectionString = creds.ToSqlConnectionString(fundConfig.Host);
-
+                //var creds = sp.GetService<FundCredentials>().Credentials;
+                //var connectionString = creds.ToSqlConnectionString(fundConfig.Host);
                 //options.UseLazyLoadingProxies();
                 //Connect to postgresql database.
+            });
 
+            services.AddSingleton<MongoDbContext>(sp =>
+            {
+                var creds = sp.GetService<FundCredentials>().Credentials;
+                var mongoConnectionString = creds.ToMongoConnectionString(mongoConfig.Host);
+                // Get your MongoDB connection string and database name from your configuration
+                // Create and return a new instance of MongoDbContext
+                return new MongoDbContext(mongoConnectionString, mongoConfig.DatabaseName);
             });
 
             services.AddScoped<IFundContextFactory, FundContextFactory>();

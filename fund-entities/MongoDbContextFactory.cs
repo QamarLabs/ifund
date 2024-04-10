@@ -9,7 +9,7 @@ using static QamarLabs.Microservices.FundEntities.ServiceBootstrap;
 
 namespace QamarLabs.Microservices.FundEntities
 {
-    public class MongoDbContextFactory: IMongoDbContextFactory
+    public class MongoDbContextFactory: IMongoDbContextFactory, IDisposable
     {
         private List<MongoDbContext> Contexts { get; } = new List<MongoDbContext>();
         private IConfiguration Configuration { get; }
@@ -24,6 +24,14 @@ namespace QamarLabs.Microservices.FundEntities
             var dbContext = new MongoDbContext(mongoDbConfig.Host, creds.DefaultDatabase ?? mongoDbConfig.DatabaseName);
 
             return dbContext;
+        }
+
+        public void Dispose()
+        {
+            foreach (var context in Contexts)
+                context.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 }

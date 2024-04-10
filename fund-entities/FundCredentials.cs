@@ -20,7 +20,6 @@ namespace QamarLabs.Microservices.FundEntities
 
                 // creds are being used before service could refresh the the creds
                 var fundConfig = Configuration.GetFundConfig();
-
                 /*
                 var secretRes = SecretsManager.GetSecretValueAsync(new GetSecretValueRequest
                 {

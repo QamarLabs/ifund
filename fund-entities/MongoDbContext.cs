@@ -18,6 +18,31 @@ namespace QamarLabs.Microservices.FundEntities
         {
             return _database.GetCollection<T>(collectionName);
         }
+
+        private bool _disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    // Dispose managed resources, if any
+                    // Note: The MongoDB driver manages its own resources and doesn't require manual disposal
+                }
+
+                // Dispose unmanaged resources, if any
+                // For simplicity, there are no unmanaged resources in this example
+
+                _disposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
     }
 
 }

@@ -22,5 +22,10 @@ namespace QamarLabs.Microservices.FundEntities
         {
             return $"Data Source={hostAddress};Initial Catalog={DefaultDatabase};User ID={Username};Password={Password};TrustServerCertificate=true;Encrypt=false";
         }
+        public string ToMongoConnectionString(string hostAddress)
+        {
+            if (hostAddress.Contains("localhost:27017")) return "mongodb://localhost:27017/";
+            return $"{hostAddress}";
+        }
     }
 }
