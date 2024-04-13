@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace startup_business.DTO
+namespace QamarLabs.Microservices.StartupBusinesses.DTO
 {
     public class PutStartupBusinessRequest
     {

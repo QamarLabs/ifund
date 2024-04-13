@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace startup_business.DTO
+namespace QamarLabs.Microservices.StartupBusinesses.DTO
 {
     public class CreateStartupBusinessRequest
     {

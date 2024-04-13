@@ -3,10 +3,10 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using QamarLabs.Microservices.FundEntities;
 using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
-using startup_business.DTO;
+using QamarLabs.Microservices.StartupBusinesses.DTO;
 using System.Reflection;
 
-namespace startup_business.Controllers
+namespace QamarLabs.Microservices.StartupBusinesses.Controllers
 {
     [ApiController]
     [Route("[controller]")]

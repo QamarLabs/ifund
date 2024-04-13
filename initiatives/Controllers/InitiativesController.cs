@@ -1,13 +1,13 @@
 using Amazon.Runtime.Internal;
-using initiatives.DTO;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using QamarLabs.Microservices.FundEntities;
 using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
+using QamarLabs.Microservices.Initiatives.DTO;
 using System.Reflection;
 
-namespace initiatives.Controllers
+namespace QamarLabs.Microservices.Initiatives.Controllers
 {
     [ApiController]
     [Route("[controller]")]

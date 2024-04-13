@@ -4,7 +4,8 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>090dd9d8-91b4-4ae8-9ea0-548f0b07dc57</UserSecretsId>
+	<RootNamespace>QamarLabs.Microservices.Initiatives</RootNamespace>
+	<UserSecretsId>090dd9d8-91b4-4ae8-9ea0-548f0b07dc57</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "location", "location\locati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "initiatives", "initiatives\initiatives.csproj", "{8D794ABF-217F-4E9E-97A4-F721B405308C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "startup-business", "startup-business\startup-business.csproj", "{C656C274-9905-4948-901A-F9D4DF78B2F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "startup-businesses", "startup-business\startup-businesses.csproj", "{C656C274-9905-4948-901A-F9D4DF78B2F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "common", "common\common.csproj", "{C64D3221-293C-4711-B33F-73A24ECF5597}"
 EndProject
@@ -34,7 +34,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "frontend", "frontend\", "{E
 		SlnRelativePath = "frontend\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fund-entities", "fund-entities\fund-entities.csproj", "{A1A75133-948A-4DE3-BF9F-13281785FB27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fund-entities", "fund-entities\fund-entities.csproj", "{A1A75133-948A-4DE3-BF9F-13281785FB27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2315,9 +2315,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\17275\\pocs\\fund-islam\\startup-business\\startup-business.csproj",
-      "projectName": "startup-business",
-      "projectPath": "C:\\Users\\17275\\pocs\\fund-islam\\startup-business\\startup-business.csproj",
+      "projectUniqueName": "C:\\Users\\17275\\pocs\\fund-islam\\startup-business\\startup-businesses.csproj",
+      "projectName": "startup-businesses",
+      "projectPath": "C:\\Users\\17275\\pocs\\fund-islam\\startup-business\\startup-businesses.csproj",
       "packagesPath": "C:\\Users\\17275\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\17275\\pocs\\fund-islam\\startup-business\\obj\\",
       "projectStyle": "PackageReference",

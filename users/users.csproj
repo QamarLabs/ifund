@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>15767f0d-b100-4487-bb76-f21f07ac821b</UserSecretsId>
+	<RootNamespace>QamarLabs.Microservices.Users</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 

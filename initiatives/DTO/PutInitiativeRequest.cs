@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace initiatives.DTO
+namespace QamarLabs.Microservices.Initiatives.DTO
 {
     public class PutInitiativeRequest
     {
