@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
+using QamarLabs.Microservices.FundEntities;
+using QamarLabs.Microservices.Common.DTO;
 
 namespace common.Controllers
 {
@@ -6,11 +10,6 @@ namespace common.Controllers
     [Route("[controller]")]
     public class OrganizationController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<OrganizationController> _logger;
 
         public OrganizationController(ILogger<OrganizationController> logger)
@@ -18,16 +17,34 @@ namespace common.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost(Name = "CreateOrganization")]
+        public async Task CreateOrganization(
+            [FromServices] MongoDbContext mongoContext,
+            [FromBody] CreateOrganizationRequest req,
+            CancellationToken cancellationToken)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var organizationsCollection = mongoContext.GetCollection<Organization>("organizations");
+            var locationCollection = mongoContext.GetCollection<Location>("locations");
+            var newLocation = new Location()
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                City = req.HqLocation.City ?? "",
+                StateOrProvince = req.HqLocation.StateOrProvince ?? "",
+                Country = req.HqLocation.Country ?? "",
+                Latitude = req.HqLocation.Latitude,
+                Longitude = req.HqLocation.Longitude,
+                Geohash = req.HqLocation.Geohash
+            };
+            await locationCollection.InsertOneAsync(newLocation);
+
+            await organizationsCollection.InsertOneAsync(
+                new Organization()
+                {
+                   Name = req.Name,
+                   Description = req.Description,
+                   HeadquarterLocationId = ObjectId.Parse(newLocation.Id),
+                }
+            );
+
         }
     }
 }
