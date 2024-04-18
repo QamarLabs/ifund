@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
-using QamarLabs.Microservices.FundEntities;
 using QamarLabs.Microservices.Common.DTO;
+using QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext;
 
 namespace common.Controllers
 {

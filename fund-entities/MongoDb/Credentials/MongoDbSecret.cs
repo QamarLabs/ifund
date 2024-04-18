@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace QamarLabs.Microservices.FundEntities
+namespace QamarLabs.Microservices.FundEntities.MongoDb.Credentials
 {
     public class MongoDbSecret
     {

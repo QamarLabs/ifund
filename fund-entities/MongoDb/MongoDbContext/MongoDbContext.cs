@@ -1,7 +1,7 @@
 ﻿using System;
 using MongoDB.Driver;
 
-namespace QamarLabs.Microservices.FundEntities
+namespace QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext
 {
 
     public class MongoDbContext

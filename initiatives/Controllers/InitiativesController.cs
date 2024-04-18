@@ -2,8 +2,8 @@ using Amazon.Runtime.Internal;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using QamarLabs.Microservices.FundEntities;
 using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
+using QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext;
 using QamarLabs.Microservices.Initiatives.DTO;
 using System.Reflection;
 

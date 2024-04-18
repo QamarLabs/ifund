@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-namespace QamarLabs.Microservices.FundEntities
+namespace QamarLabs.Microservices.FundEntities.MongoDb.Credentials
 {
     public class MongoDbCredentials
     {

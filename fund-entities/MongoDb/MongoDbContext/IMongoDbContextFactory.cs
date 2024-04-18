@@ -1,4 +1,4 @@
-﻿namespace QamarLabs.Microservices.FundEntities
+﻿namespace QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext
 {
     public interface IMongoDbContextFactory
     {

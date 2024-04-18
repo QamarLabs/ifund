@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static QamarLabs.Microservices.FundEntities.ServiceBootstrap;
 
-namespace QamarLabs.Microservices.FundEntities
+namespace QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext
 {
-    public class MongoDbContextFactory: IMongoDbContextFactory, IDisposable
+    public class MongoDbContextFactory : IMongoDbContextFactory, IDisposable
     {
         private List<MongoDbContext> Contexts { get; } = new List<MongoDbContext>();
         private IConfiguration Configuration { get; }
