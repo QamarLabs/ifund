@@ -24,8 +24,8 @@ namespace common.Controllers
          [FromBody] CreateLocationRequest req,
          CancellationToken cancellationToken)
         {
-            /*
-            var locationCollection = mongoContext.GetCollection<>("locations");
+          
+            var locationCollection = mongoContext.GetCollection<Location>("locations");
             var newLocation = new Location()
             {
                 City = req.City ?? "",
@@ -36,7 +36,7 @@ namespace common.Controllers
                 Geohash = req.Geohash
             };
             await locationCollection.InsertOneAsync(newLocation);
-            */
+            
         }
     }
 }
