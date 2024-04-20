@@ -1,0 +1,10 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "accountId",
+      "organizationId",
+      "credibilityScore",
+      "createdDate"
+    ]
+  }
+}

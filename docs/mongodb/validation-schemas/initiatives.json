@@ -1,0 +1,17 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "name",
+      "description",
+      "locationId",
+      "numberOfFunders",
+      "amountFunded",
+      "goal",
+      "reachedGoal",
+      "communityLeaderId",
+      "fundEndDate",
+      "distributionTypeId",
+      "createdDate"
+    ]
+  }
+}

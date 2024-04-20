@@ -1,0 +1,12 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "city",
+      "stateOrProvince",
+      "country",
+      "latitude",
+      "longitude",
+      "geoHash"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "name",
+      "description",
+      "servicesProvided",
+      "numberOfEmployees",
+      "amountRaised",
+      "numberOfFunders",
+      "goal",
+      "reachedGoal",
+      "startupFounderId",
+      "profitDistributionTypeId",
+      "isPublic",
+      "isActive",
+      "locationId",
+      "createdDate"
+    ]
+  }
+}

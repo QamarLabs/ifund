@@ -1,0 +1,9 @@
+{
+    "$jsonSchema": {
+      "required": [
+        "name",
+        "description",
+        "headquarterLocationId"
+      ]
+    }
+  }

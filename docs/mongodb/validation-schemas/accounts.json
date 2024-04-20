@@ -1,0 +1,13 @@
+{
+  "$jsonSchema": {
+    "required": [
+      "email",
+      "phoneNumber",
+      "firstName",
+      "lastName",
+      "age",
+      "locationId",
+      "createdDate"
+    ]
+  }
+}
