@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using QamarLabs.Microservices.FundEntities.Entities.MongoDb;
 using QamarLabs.Microservices.FundEntities.MongoDb.MongoDbContext;
 using QamarLabs.Microservices.Initiatives.DTO;
+using System.Collections;
 using System.Reflection;
 
 namespace QamarLabs.Microservices.Initiatives.Controllers
@@ -14,7 +15,15 @@ namespace QamarLabs.Microservices.Initiatives.Controllers
     public class InitiativesController : ControllerBase
     {
 
-        [HttpPost(Name = "CreateInitiative")]
+        [HttpPost(Name = "SearchInitiatives")]
+        public async Task SearchInitiatives(
+            [FromServices] MongoDbContext mongoContext,
+            [FromBody] SearchInitiativeRequest req,
+            CancellationToken cancellationToken)
+        {
+        }
+
+            [HttpPost(Name = "CreateInitiative")]
         public async Task CreateInitiative(
             [FromServices] MongoDbContext mongoContext,
             [FromBody] CreateInitiativeRequest req, 

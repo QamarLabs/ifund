@@ -1,0 +1,71 @@
+networks:
+  fund-islam-net:
+    name: fund-islam-net
+
+services:
+  local-service:
+    image: ${DOCKER_REGISTRY-}localservice
+    build:
+      context: .
+      dockerfile: local-service/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  redis:
+    image: "redis:6"
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  initiatives:
+    image: ${DOCKER_REGISTRY-}initiatives
+    build:
+      context: .
+      dockerfile: /initiatives/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  common:
+    image: ${DOCKER_REGISTRY-}common
+    build:
+      context: .
+      dockerfile: /common/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  location:
+    image: ${DOCKER_REGISTRY-}location
+    build:
+      context: .
+      dockerfile: /location/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  startup-businesses:
+    image: ${DOCKER_REGISTRY-}startup-businesses
+    build:
+      context: .
+      dockerfile: /startup-businesses/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
+
+  users:
+    image: ${DOCKER_REGISTRY-}users
+    build:
+      context: .
+      dockerfile: /users:/Dockerfile
+    networks:
+      - fund-islam-net
+    dns:
+      - 8.8.8.8
