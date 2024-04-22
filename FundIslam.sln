@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "users", "users\users.csproj", "{9F6B5FE7-C8AF-4D5F-97AB-BA06770ECBB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "location", "location\location.csproj", "{75C17230-540D-435C-BBFA-6634BD5B28A2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "initiatives", "initiatives\initiatives.csproj", "{8D794ABF-217F-4E9E-97A4-F721B405308C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "startup-businesses", "startup-business\startup-businesses.csproj", "{C656C274-9905-4948-901A-F9D4DF78B2F7}"
@@ -52,10 +50,6 @@ Global
 		{9F6B5FE7-C8AF-4D5F-97AB-BA06770ECBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6B5FE7-C8AF-4D5F-97AB-BA06770ECBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F6B5FE7-C8AF-4D5F-97AB-BA06770ECBB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75C17230-540D-435C-BBFA-6634BD5B28A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75C17230-540D-435C-BBFA-6634BD5B28A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75C17230-540D-435C-BBFA-6634BD5B28A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75C17230-540D-435C-BBFA-6634BD5B28A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D794ABF-217F-4E9E-97A4-F721B405308C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D794ABF-217F-4E9E-97A4-F721B405308C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D794ABF-217F-4E9E-97A4-F721B405308C}.Release|Any CPU.ActiveCfg = Release|Any CPU
