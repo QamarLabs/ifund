@@ -60,3 +60,8 @@ C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\runtimes\osx\native\libmon
 C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
 C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\fund-entities.dll
 C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\fund-entities.pdb
+C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\common.deps.json
+C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\common.runtimeconfig.json
+C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\common.exe
+C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\common.dll
+C:\Users\17275\pocs\fund-islam\users\bin\Debug\net7.0\common.pdb

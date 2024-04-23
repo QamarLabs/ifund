@@ -1,7 +1,9 @@
 using QamarLabs.Microservices.FundEntities;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var fundConfig = builder.Configuration.GetFundConfig();
+var mongoConfig = builder.Configuration.GetMongoDbConfig();
+builder.Services.AddFundContext(fundConfig!, mongoConfig!);
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

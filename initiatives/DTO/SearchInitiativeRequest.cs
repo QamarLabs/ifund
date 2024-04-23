@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using QamarLabs.Microservices.Common.DTO;
 
 namespace QamarLabs.Microservices.Initiatives.DTO
 {
-    public class SearchInitiativeRequest
+    public class SearchInitiativeRequest: CommonSearchRequest
     {
         [JsonProperty("name", Required = Required.Default)]
         public string Name { get; set; }
@@ -10,9 +11,5 @@ namespace QamarLabs.Microservices.Initiatives.DTO
         public string Description { get; set; }
         [JsonProperty("locationId", Required = Required.Default)]
         public string LocationId { get; set; }
-        [JsonProperty("pageIndex", Required = Required.Always)]
-        public int PageIndex { get; set; }
-        [JsonProperty("numberOfPages", Required = Required.Always)]
-        public int NumberOfPages { get; set; }
     }
 }

@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "OnSRLHn4z6/MCuxJhDCfCvmLHbjnQD3pFiGCS81GS/U=",
+  "Hash": "6HsyatWJd/k/103Scj6m9rY/PboUlx/t/aAFQPi0GQg=",
   "Source": "users",
   "BasePath": "_content/users",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\17275\\pocs\\fund-islam\\common\\common.csproj",
+      "Version": 2,
+      "Source": "common",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

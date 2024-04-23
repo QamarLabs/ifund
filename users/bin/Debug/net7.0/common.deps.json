@@ -6,18 +6,17 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "users/1.0.0": {
+      "common/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.16",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
           "Newtonsoft.Json": "13.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
           "Swashbuckle.AspNetCore": "6.4.0",
-          "common": "1.0.0",
           "fund-entities": "1.0.0"
         },
         "runtime": {
-          "users.dll": {}
+          "common.dll": {}
         }
       },
       "AWSSDK.Core/3.7.100.14": {
@@ -414,19 +413,6 @@
           }
         }
       },
-      "common/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.16",
-          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
-          "Newtonsoft.Json": "13.0.1",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
-          "Swashbuckle.AspNetCore": "6.4.0",
-          "fund-entities": "1.0.0"
-        },
-        "runtime": {
-          "common.dll": {}
-        }
-      },
       "fund-entities/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -443,7 +429,7 @@
     }
   },
   "libraries": {
-    "users/1.0.0": {
+    "common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -776,11 +762,6 @@
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
-    },
-    "common/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "fund-entities/1.0.0": {
       "type": "project",

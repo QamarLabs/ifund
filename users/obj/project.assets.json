@@ -782,6 +782,27 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
+      "common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.16",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
+          "Newtonsoft.Json": "13.0.1",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "fund-entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/common.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "fund-entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -2291,6 +2312,11 @@
         "zstdsharp.port.nuspec"
       ]
     },
+    "common/1.0.0": {
+      "type": "project",
+      "path": "../common/common.csproj",
+      "msbuildProject": "../common/common.csproj"
+    },
     "fund-entities/1.0.0": {
       "type": "project",
       "path": "../fund-entities/fund-entities.csproj",
@@ -2304,6 +2330,7 @@
       "Newtonsoft.Json >= 13.0.1",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.4",
       "Swashbuckle.AspNetCore >= 6.4.0",
+      "common >= 1.0.0",
       "fund-entities >= 1.0.0"
     ]
   },
@@ -2341,6 +2368,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\17275\\pocs\\fund-islam\\common\\common.csproj": {
+              "projectPath": "C:\\Users\\17275\\pocs\\fund-islam\\common\\common.csproj"
+            },
             "C:\\Users\\17275\\pocs\\fund-islam\\fund-entities\\fund-entities.csproj": {
               "projectPath": "C:\\Users\\17275\\pocs\\fund-islam\\fund-entities\\fund-entities.csproj"
             }
