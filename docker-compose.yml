@@ -40,16 +40,6 @@ services:
     dns:
       - 8.8.8.8
 
-  location:
-    image: ${DOCKER_REGISTRY-}location
-    build:
-      context: .
-      dockerfile: /location/Dockerfile
-    networks:
-      - fund-islam-net
-    dns:
-      - 8.8.8.8
-
   startup-businesses:
     image: ${DOCKER_REGISTRY-}startup-businesses
     build:

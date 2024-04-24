@@ -26,13 +26,6 @@ services:
       - "80"
       - "443"
 
-  location:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "80"
-
   startup-businesses:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

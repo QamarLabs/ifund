@@ -7,6 +7,7 @@
     <UserSecretsId>7e251818-59e1-4818-b012-69dcd44bd765</UserSecretsId>
 	<RootNamespace>QamarLabs.Microservices.Common</RootNamespace>
 	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
