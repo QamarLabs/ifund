@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OWe47MjJausSvmwoOKXWe+uRB/B2TzdEG1BFaSqn6FE=",
+  "Source": "local-service",
+  "BasePath": "_content/local-service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

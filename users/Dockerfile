@@ -13,11 +13,11 @@ COPY ["users/users.csproj", "users/"]
 RUN dotnet restore "./users/users.csproj"
 COPY . .
 WORKDIR "/src/users"
-RUN dotnet build "./users.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./users.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./users.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./users.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

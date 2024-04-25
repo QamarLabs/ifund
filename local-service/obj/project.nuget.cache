@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Keuy9vzanrsRSIeEVS5kZULuL1ddID9+SUrkV2b4iFS5wypjnRXD+WLfDFncsfEbJEuPLUJG2ySGVUQuJjeEnQ==",
+  "dgSpecHash": "/KZwiOmhaBNfMP6n/0XlCRHAkFrGcdDX1wOPqD0SFn+olwQS3vp80dxR+nnIfWPBwdY3lHprLDBAJnBQAUoLqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\17275\\pocs\\fund-islam\\local-service\\local-service.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\17275\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512",
+    "C:\\Users\\17275\\.nuget\\packages\\system.security.permissions\\8.0.0\\system.security.permissions.8.0.0.nupkg.sha512",
+    "C:\\Users\\17275\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

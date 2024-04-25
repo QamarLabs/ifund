@@ -13,11 +13,11 @@ COPY ["common/common.csproj", "common/"]
 RUN dotnet restore "./common/common.csproj"
 COPY . .
 WORKDIR "/src/common"
-RUN dotnet build "./common.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "./common.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./common.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./common.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
