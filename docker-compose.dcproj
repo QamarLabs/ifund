@@ -7,7 +7,7 @@
     <ProjectGuid>d0af4dea-1cfa-4498-b7fc-bba9997fab81</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>common</DockerServiceName>
+    <DockerServiceName>local-service</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

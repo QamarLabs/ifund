@@ -1,0 +1,10 @@
+C:\Users\17275\pocs\fund-islam\bin\Debug\local-service.deps.json
+C:\Users\17275\pocs\fund-islam\bin\Debug\local-service.runtimeconfig.json
+C:\Users\17275\pocs\fund-islam\bin\Debug\appsettings.Development.json
+C:\Users\17275\pocs\fund-islam\bin\Debug\appsettings.json
+C:\Users\17275\pocs\fund-islam\bin\Debug\local-service.exe
+C:\Users\17275\pocs\fund-islam\bin\Debug\local-service.dll
+C:\Users\17275\pocs\fund-islam\bin\Debug\local-service.pdb
+C:\Users\17275\pocs\fund-islam\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+C:\Users\17275\pocs\fund-islam\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+C:\Users\17275\pocs\fund-islam\obj\Debug\docker-c.35A3FFBA.Up2Date
