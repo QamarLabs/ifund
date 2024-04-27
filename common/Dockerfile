@@ -1,25 +1,21 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+
 WORKDIR /src
-COPY ["common/common.csproj", "common/"]
-RUN dotnet restore "./common/common.csproj"
-COPY . .
-WORKDIR "/src/common"
-RUN dotnet build "./common.csproj" -c Release -o /app/build
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./common.csproj" -c Release -o /app/publish /p:UseAppHost=false
+COPY ["common.csproj", "./"]
+# Adjust the path to match the location of "fund-entities" in your directory structure
+RUN dotnet restore "./common.csproj"
+
+COPY . .
+RUN dotnet publish -c Debug -o /app/publish
 
 FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+WORKDIR /app/publish
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "common.dll"]

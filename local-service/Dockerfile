@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["local-service/local-service.csproj", "local-service/"]
+COPY ["local-service.csproj", "./"]
 RUN dotnet restore "./local-service/local-service.csproj"
 COPY . .
 WORKDIR "/src/local-service"
