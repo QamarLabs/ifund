@@ -1,0 +1,90 @@
+networks:
+  fund-islam-net:
+    name: fund-islam-net
+services:
+  common:
+    build:
+      context: C:\Users\17275\pocs\fund-islam
+      dockerfile: /common/Dockerfile
+    dns:
+    - 8.8.8.8
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      BUILD_CONFIGURATION: Release
+    image: aliqamarlabs/fund-islam-common
+    networks:
+      fund-islam-net: {}
+    ports:
+    - target: 80
+  initiatives:
+    build:
+      context: C:\Users\17275\pocs\fund-islam
+      dockerfile: /initiatives/Dockerfile
+    dns:
+    - 8.8.8.8
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      BUILD_CONFIGURATION: Release
+    image: aliqamarlabs/fund-islam-initiatives
+    networks:
+      fund-islam-net: {}
+    ports:
+    - target: 80
+  local-service:
+    build:
+      context: C:\Users\17275\pocs\fund-islam
+      dockerfile: local-service/Dockerfile
+    dns:
+    - 8.8.8.8
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      BUILD_CONFIGURATION: Release
+    image: aliqamarlabs/fund-islam-localservice
+    networks:
+      fund-islam-net: {}
+    ports:
+    - target: 80
+    - target: 443
+  redis:
+    dns:
+    - 8.8.8.8
+    image: redis:6
+    networks:
+      fund-islam-net: {}
+    ports:
+    - published: 6379
+      target: 6379
+  startup-businesses:
+    build:
+      context: C:\Users\17275\pocs\fund-islam
+      dockerfile: /startup-businesses/Dockerfile
+    dns:
+    - 8.8.8.8
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      BUILD_CONFIGURATION: Release
+    image: aliqamarlabs/fund-islam-startup-businesses
+    networks:
+      fund-islam-net: {}
+    ports:
+    - target: 80
+  users:
+    build:
+      context: C:\Users\17275\pocs\fund-islam
+      dockerfile: /users/Dockerfile
+    dns:
+    - 8.8.8.8
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      BUILD_CONFIGURATION: Release
+    image: aliqamarlabs/fund-islam-users
+    networks:
+      fund-islam-net: {}
+    ports:
+    - target: 80
+version: '3.4'
