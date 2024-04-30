@@ -12,7 +12,7 @@ import RecentActivityTable from "../Tables/RecentActivityTable";
 import InitiativesTable from "../Tables/InitiativesTable";
 import { Card } from "@tremor/react";
 import MapOne from "../Maps/MapOne";
-
+import BusinessesTable from "../Tables/BusinessesTable";
 const StartupFounders: React.FC = () => {
   const [startupFounderData, setStartupLeaderData] = useState<{
     [key: string]: any;
@@ -54,12 +54,8 @@ const StartupFounders: React.FC = () => {
 
       </div> */}
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <InitiativesTable
-          initiatives={startupFounderData["previousFundingRounds"]!}
-          title="Previous Funding Rounds"
-        />
-        <InitiativesTable
-          initiatives={startupFounderData["businesses"]!}
+        <BusinessesTable
+          businesses={startupFounderData["businesses"]!}
           title="Current Businesses"
         />
         <MapOne

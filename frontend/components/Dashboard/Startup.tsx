@@ -8,10 +8,8 @@ import startupJson from "@/data/startup.json";
 // without this the component renders on server and throws an error
 import dynamic from "next/dynamic";
 import { DataCard, UserDataCard } from "../Cards/DataCard";
-import RecentActivityTable from "../Tables/RecentActivityTable";
-import InitiativesTable from "../Tables/InitiativesTable";
-import { Card } from "@tremor/react";
-import MapOne from "../Maps/MapOne";
+const MapOne = React.lazy(() => import("../Maps/MapOne"));
+
 // const MapOne = dynamic(() => import("../Maps/MapOne"), {
 //   ssr: false,
 // });
@@ -64,10 +62,12 @@ const Startup: React.FC = () => {
           initiatives={communityLeaderData["currentInitiatives"]!}
           title="Current Initiatives"
         /> */}
-        <MapOne
-          residence={startupData["residence"]!}
-          countryOfResidence={startupData["countryOfResidence"]!}
-        />
+        <React.Suspense fallback={<div>Loading Map...</div>}>
+          <MapOne
+            residence={startupData["residence"]!}
+            countryOfResidence={startupData["countryOfResidence"]!}
+          />
+        </React.Suspense>
         {/* <MapOne /> */}
         {/* <div className=""></div> */}
         {/* <ChatCard /> */}

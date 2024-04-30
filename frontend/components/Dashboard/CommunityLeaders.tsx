@@ -9,9 +9,9 @@ import communityLeaderJson from "@/data/communityLeader.json";
 import dynamic from "next/dynamic";
 import { DataCard, UserDataCard } from "../Cards/DataCard";
 import RecentActivityTable from "../Tables/RecentActivityTable";
-import InitiativesTable from "../Tables/InitiativesTable";
 import { Card } from "@tremor/react";
-import MapOne from "../Maps/MapOne";
+const InitiativesTable = React.lazy(() => import("../Tables/InitiativesTable"));
+const MapOne = React.lazy(() => import("../Maps/MapOne"));
 // const MapOne = dynamic(() => import("../Maps/MapOne"), {
 //   ssr: false,
 // });
@@ -57,20 +57,26 @@ const CommunityLeaders: React.FC = () => {
 
       </div> */}
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <InitiativesTable
-          initiatives={communityLeaderData["previousInitiatives"]!}
-          title="Previous Initiatives"
-        />
-        <InitiativesTable
-          initiatives={communityLeaderData["currentInitiatives"]!}
-          title="Current Initiatives"
-        />
-        <MapOne
-          residence={communityLeaderJson.accountInfo["residence"]!}
-          countryOfResidence={
-            communityLeaderJson.accountInfo["countryOfResidence"]!
-          }
-        />
+        <React.Suspense fallback={<div>Loading Previous Initiatives...</div>}>
+          <InitiativesTable
+            initiatives={communityLeaderData["previousInitiatives"]!}
+            title="Previous Initiatives"
+          />
+        </React.Suspense>
+        <React.Suspense fallback={<div>Loading Current Initiatives...</div>}>
+          <InitiativesTable
+            initiatives={communityLeaderData["currentInitiatives"]!}
+            title="Current Initiatives"
+          />
+        </React.Suspense>
+        <React.Suspense fallback={<div>Loading Map...</div>}>
+          <MapOne
+            residence={communityLeaderJson.accountInfo["residence"]!}
+            countryOfResidence={
+              communityLeaderJson.accountInfo["countryOfResidence"]!
+            }
+          />
+        </React.Suspense>
         {/* <MapOne /> */}
         {/* <div className=""></div> */}
         {/* <ChatCard /> */}

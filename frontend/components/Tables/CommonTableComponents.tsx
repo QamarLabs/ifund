@@ -11,8 +11,15 @@ export const Accordion = ({
   children,
 }: React.PropsWithChildren<AccordionProps>) => {
   return (
-    <div className="border-gray-200 border-b">
+    <div className="border-gray-200 border-top-transparent border-bottom-transparent">
       {isOpen && <div>{children}</div>}
     </div>
   );
 };
+
+export function formatCurrency(amount: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(amount);
+}

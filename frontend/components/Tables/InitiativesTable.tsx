@@ -71,12 +71,10 @@ const InitiativesTable: React.FC<InitiativesTableProps> = ({ initiatives, title 
                     </button>
                   </td>
                 </tr>
-                <tr key={index} className={'bg-gray-50 dark:bg-gray-900 mx-auto'}>
-
+                <tr key={index} className={'bg-gray-50 dark:bg-gray-900 mx-auto border-transparent'}>
                   <td colSpan={12}>
                     <Accordion title="" isOpen={openAccordionIndex === index} onClick={() => setOpenAccordionIndex(index)}>
                     <RecentActivityTable recentActivity={initiative.recentActivity} />
-
                     </Accordion>
                   </td>
                 </tr>
