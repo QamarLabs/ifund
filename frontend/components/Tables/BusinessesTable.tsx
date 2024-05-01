@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Card } from "@tremor/react";
 import RecentActivityTable from "./RecentActivityTable";
-import { Accordion, formatCurrency } from "./CommonTableComponents";
+import {
+  Accordion,
+  IFilter,
+  ISorter,
+  SortDirection,
+  SortInd,
+  formatCurrency,
+} from "./CommonTableComponents";
 import { IRecentActivityItem } from "../Cards/DataCard";
 import { Check, X } from "lucide-react";
 
@@ -36,7 +43,23 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
     null,
   );
+  const [sorters, setSorters] = useState<ISorter[]>([]);
+  const [filters, setFilters] = useState<IFilter[]>([]);
 
+  const setSorter = (key: string) => {
+    const copyOfSorters = sorters.slice();
+    const curSorterIdx = copyOfSorters.findIndex((s) => s.key === key);
+    if (curSorterIdx >= 0) {
+      if (
+        copyOfSorters[curSorterIdx].direction === SortDirection.AscendingOrder
+      )
+        copyOfSorters[curSorterIdx].direction = SortDirection.DescendingOrder;
+      else copyOfSorters.splice(curSorterIdx, 1);
+    } else {
+      copyOfSorters.push({ direction: SortDirection.AscendingOrder, key: key });
+    }
+    setSorters(copyOfSorters);
+  };
 
   return (
     <Card className="col-span-12">
@@ -45,17 +68,35 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
         <table className="divide-gray-200 min-w-full divide-y">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Name
+              <th
+                className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                onClick={() => setSorter("name")}
+              >
+                <div className="flex">
+                  <span>Name</span>
+                  <SortInd sorters={sorters} sKey="name" />
+                </div>
               </th>
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 Description
               </th>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Funded Date
+              <th
+                className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                onClick={() => setSorter("formationDate")}
+              >
+                <div className="flex">
+                  <span>Formation Date</span>
+                  <SortInd sorters={sorters} sKey="formationDate" />
+                </div>
               </th>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                Total Funded
+              <th
+                className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                onClick={() => setSorter("totalAmountRaised")}
+              >
+                <div className="flex">
+                  <span>Total Raised</span>
+                  <SortInd sorters={sorters} sKey="totalAmountRaised" />
+                </div>
               </th>
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 Is Active
