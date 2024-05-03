@@ -3,9 +3,10 @@ import { BRAND } from "@/types/brand";
 import Image from "next/image";
 import { IRecentActivityItem } from "../Cards/DataCard";
 import RecentActivityTable from "./RecentActivityTable";
-import { Accordion } from './CommonTableComponents';
+import { Accordion, SortInd } from "./CommonTableComponents";
 import React from "react";
 import { Card } from "@tremor/react";
+import useTableFiltersAndSorters from "@/hooks/useTableFiltersAndSorters";
 
 export interface ICostBreakdown {
   description: string;
@@ -33,52 +34,109 @@ type InitiativesTableProps = {
   title: string;
 };
 
-const InitiativesTable: React.FC<InitiativesTableProps> = ({ initiatives, title }) => {
-  const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(null);
+const InitiativesTable: React.FC<InitiativesTableProps> = ({
+  initiatives,
+  title,
+}) => {
+  const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
+    null,
+  );
+  const { handleSort, sorters } = useTableFiltersAndSorters();
 
   return (
     <Card className="col-span-12">
-      <h2 className="text-lg font-semibold mb-4">{title}</h2>
+      <h2 className="mb-4 text-lg font-semibold">{title}</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="divide-gray-200 min-w-full divide-y">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Funded Date</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Funded</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Organization</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recent Activity</th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("name", initiatives)}>
+                <div className="flex">
+                  <span>Name</span>
+                  <SortInd sorters={sorters} sKey="name" />
+                </div>
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                Description
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("fundedDate", initiatives)}>
+                <div className="flex">
+                  <span>Funded Date</span>
+                  <SortInd sorters={sorters} sKey="fundedDate" />
+                </div>
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("totalFunded", initiatives)}>
+                <div className="flex">
+                  <span>Total Funded</span>
+                  <SortInd sorters={sorters} sKey="totalFunded" />
+                </div>
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                Category
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("organization", initiatives)}>
+                <div className="flex">
+                  <span>Organization</span>
+                  <SortInd sorters={sorters} sKey="organization" />
+                </div>
+              </th>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                Recent Activity
+              </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="divide-gray-200 divide-y bg-white">
             {initiatives.map((initiative, index) => (
               <React.Fragment key={index}>
-                <tr className={index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-900' : 'bg-white'}>
-                  <td className="px-6 py-4 whitespace-nowrap">{initiative.name}</td>
-                  <td className="px-6 py-4 w-200">{initiative.description}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{initiative.fundedDate}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">${initiative.totalFunded}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{initiative.category}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{initiative.organization}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                <tr
+                  className={
+                    index % 2 === 0 ? "bg-gray-50 dark:bg-gray-900" : "bg-white"
+                  }
+                >
+                  <td className="whitespace-nowrap px-6 py-4">
+                    {initiative.name}
+                  </td>
+                  <td className="w-200 px-6 py-4">{initiative.description}</td>
+                  <td className="whitespace-nowrap px-6 py-4">
+                    {initiative.fundedDate}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4">
+                    ${initiative.totalFunded}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4">
+                    {initiative.category}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4">
+                    {initiative.organization}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4">
                     <button
                       className="text-blue-500 hover:text-blue-700"
                       onClick={() => setOpenAccordionIndex(index)}
                     >
-                      {openAccordionIndex === index ? 'Close' : 'View'}
+                      {openAccordionIndex === index ? "Close" : "View"}
                     </button>
                   </td>
                 </tr>
-                <tr key={index} className={'bg-gray-50 dark:bg-gray-900 mx-auto border-transparent'}>
+                <tr
+                  key={index}
+                  className={
+                    "bg-gray-50 dark:bg-gray-900 mx-auto border-transparent"
+                  }
+                >
                   <td colSpan={12}>
-                    <Accordion title="" isOpen={openAccordionIndex === index} onClick={() => setOpenAccordionIndex(index)}>
-                    <RecentActivityTable recentActivity={initiative.recentActivity} />
+                    <Accordion
+                      title=""
+                      isOpen={openAccordionIndex === index}
+                      onClick={() => setOpenAccordionIndex(index)}
+                    >
+                      <RecentActivityTable
+                        recentActivity={initiative.recentActivity}
+                      />
                     </Accordion>
                   </td>
                 </tr>
-              </React.Fragment >
+              </React.Fragment>
             ))}
           </tbody>
         </table>

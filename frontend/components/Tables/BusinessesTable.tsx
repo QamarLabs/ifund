@@ -11,6 +11,7 @@ import {
 } from "./CommonTableComponents";
 import { IRecentActivityItem } from "../Cards/DataCard";
 import { Check, X } from "lucide-react";
+import useTableFiltersAndSorters from "@/hooks/useTableFiltersAndSorters";
 
 export interface ICostBreakdown {
   description: string;
@@ -43,23 +44,7 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
     null,
   );
-  const [sorters, setSorters] = useState<ISorter[]>([]);
-  const [filters, setFilters] = useState<IFilter[]>([]);
-
-  const setSorter = (key: string) => {
-    const copyOfSorters = sorters.slice();
-    const curSorterIdx = copyOfSorters.findIndex((s) => s.key === key);
-    if (curSorterIdx >= 0) {
-      if (
-        copyOfSorters[curSorterIdx].direction === SortDirection.AscendingOrder
-      )
-        copyOfSorters[curSorterIdx].direction = SortDirection.DescendingOrder;
-      else copyOfSorters.splice(curSorterIdx, 1);
-    } else {
-      copyOfSorters.push({ direction: SortDirection.AscendingOrder, key: key });
-    }
-    setSorters(copyOfSorters);
-  };
+  const { handleSort, sorters } = useTableFiltersAndSorters();
 
   return (
     <Card className="col-span-12">
@@ -70,7 +55,7 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
             <tr>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() => setSorter("name")}
+                onClick={() => handleSort<IBusinessItem>("name", businesses)}
               >
                 <div className="flex">
                   <span>Name</span>
@@ -82,7 +67,9 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
               </th>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() => setSorter("formationDate")}
+                onClick={() =>
+                  handleSort<IBusinessItem>("formationDate", businesses)
+                }
               >
                 <div className="flex">
                   <span>Formation Date</span>
@@ -91,7 +78,9 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
               </th>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() => setSorter("totalAmountRaised")}
+                onClick={() =>
+                  handleSort<IBusinessItem>("totalAmountRaised", businesses)
+                }
               >
                 <div className="flex">
                   <span>Total Raised</span>

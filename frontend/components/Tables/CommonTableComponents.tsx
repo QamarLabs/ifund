@@ -50,11 +50,7 @@ export function SortInd({ sorters, sKey }: SortIndProps) {
   if (sorter)
     return (
       <span className="ml-1">
-        {sorter.direction === SortDirection.AscendingOrder ? (
-          <ArrowUpIcon />
-        ) : (
-          <ArrowDownIcon  />
-        )}
+        {sorter.direction === SortDirection.AscendingOrder  ? '▲' : '▼'}
       </span>
     );
 
