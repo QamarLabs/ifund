@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "@tremor/react";
 import RecentActivityTable from "./RecentActivityTable";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./CommonTableComponents";
 import { IRecentActivityItem } from "../Cards/DataCard";
 import { Check, X } from "lucide-react";
-import useTableFiltersAndSorters from "@/hooks/useTableFiltersAndSorters";
+import useTableFiltersAndSorters, { DistinctTableFilters } from "@/hooks/useTableFiltersAndSorters";
 
 export interface ICostBreakdown {
   description: string;
@@ -34,17 +34,38 @@ export interface IBusinessItem {
 
 type BusinessTableProps = {
   businesses: IBusinessItem[];
+  setBusinesses: React.Dispatch<React.SetStateAction<IBusinessItem[]>>;
   title: string;
 };
 
 const BusinessesTable: React.FC<BusinessTableProps> = ({
   businesses,
+  setBusinesses,
   title,
 }) => {
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
     null,
   );
-  const { handleSort, sorters } = useTableFiltersAndSorters();
+  const [distinctFilters, setDistinctFilters] = useState<{[key: string]: any[]}>();
+
+  const { handleSort, sorters } = useTableFiltersAndSorters<IBusinessItem>(setBusinesses);
+
+  useEffect(
+    () => {
+      if(businesses) {
+        const obj = {};
+        const distinctFiltersObj:  {[key: string]: any[]} = {};
+        Object.keys(businesses[0]).forEach(bk => {
+          distinctFiltersObj[bk] = [];
+        });
+        businesses.forEach((b: IBusinessItem) => {
+          Object.keys(b).forEach(bk => distinctFiltersObj[bk] = Array.from(new Set([ ...distinctFiltersObj[bk], b[bk as keyof IBusinessItem] ])));
+        });
+        setDistinctFilters(distinctFiltersObj);
+      }
+    },
+    [businesses]
+  );
 
   return (
     <Card className="col-span-12">
@@ -55,7 +76,7 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
             <tr>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() => handleSort<IBusinessItem>("name", businesses)}
+                onClick={() => handleSort("name", businesses)}
               >
                 <div className="flex">
                   <span>Name</span>
@@ -68,7 +89,7 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 onClick={() =>
-                  handleSort<IBusinessItem>("formationDate", businesses)
+                  handleSort("formationDate", businesses)
                 }
               >
                 <div className="flex">
@@ -79,7 +100,7 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 onClick={() =>
-                  handleSort<IBusinessItem>("totalAmountRaised", businesses)
+                  handleSort("totalAmountRaised", businesses)
                 }
               >
                 <div className="flex">

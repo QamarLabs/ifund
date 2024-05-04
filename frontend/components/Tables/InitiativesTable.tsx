@@ -31,17 +31,19 @@ export interface IInitiativeItem {
 
 type InitiativesTableProps = {
   initiatives: IInitiativeItem[];
+  setInitiatives: React.Dispatch<React.SetStateAction<IInitiativeItem[]>>;
   title: string;
 };
 
 const InitiativesTable: React.FC<InitiativesTableProps> = ({
   initiatives,
+  setInitiatives,
   title,
 }) => {
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
     null,
   );
-  const { handleSort, sorters } = useTableFiltersAndSorters();
+  const { handleSort, sorters } = useTableFiltersAndSorters(setInitiatives);
 
   return (
     <Card className="col-span-12">
@@ -50,7 +52,7 @@ const InitiativesTable: React.FC<InitiativesTableProps> = ({
         <table className="divide-gray-200 min-w-full divide-y">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("name", initiatives)}>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort("name", initiatives)}>
                 <div className="flex">
                   <span>Name</span>
                   <SortInd sorters={sorters} sKey="name" />
@@ -59,13 +61,13 @@ const InitiativesTable: React.FC<InitiativesTableProps> = ({
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 Description
               </th>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("fundedDate", initiatives)}>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort("fundedDate", initiatives)}>
                 <div className="flex">
                   <span>Funded Date</span>
                   <SortInd sorters={sorters} sKey="fundedDate" />
                 </div>
               </th>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("totalFunded", initiatives)}>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort("totalFunded", initiatives)}>
                 <div className="flex">
                   <span>Total Funded</span>
                   <SortInd sorters={sorters} sKey="totalFunded" />
@@ -74,7 +76,7 @@ const InitiativesTable: React.FC<InitiativesTableProps> = ({
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 Category
               </th>
-              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort<IInitiativeItem>("organization", initiatives)}>
+              <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" onClick={() => handleSort("organization", initiatives)}>
                 <div className="flex">
                   <span>Organization</span>
                   <SortInd sorters={sorters} sKey="organization" />

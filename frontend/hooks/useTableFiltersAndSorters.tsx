@@ -6,20 +6,27 @@ import {
 } from "@/components/Tables/CommonTableComponents";
 import { useEffect, useState } from "react";
 
-interface TableFiltersAndSorters {
+interface TableFiltersAndSorters<TableDataType> {
   sorters: ISorter[];
   setSorters: React.Dispatch<ISorter[]>;
   filters: IFilter[];
   setFilters: React.Dispatch<IFilter[]>;
-  handleSort: <T>(key: string, data: T[]) => void | T[];
+  handleSort: (key: string, data: TableDataType[]) => void | TableDataType[];
 }
-function useTableFiltersAndSorters<T>(): TableFiltersAndSorters {
+export interface DistinctTableFilters {
+  distinctFilters: {key: string, distinctValues: string[]}[];
+}
+
+function useTableFiltersAndSorters<TableDataType>(
+  setData: React.Dispatch<React.SetStateAction<TableDataType[]>>
+): TableFiltersAndSorters<TableDataType> {
   // State to store our value
   // Pass  initial state function to useState so logic is only executed once
   const [sorters, setSorters] = useState<ISorter[]>([]);
   const [filters, setFilters] = useState<IFilter[]>([]);
 
-  function handleSort<T>(key: string, data: T[]) {
+
+  function handleSort(key: string, data: TableDataType[]) {
     const copyOfSorters = sorters.slice();
     const curSorterIdx = copyOfSorters.findIndex((s) => s.key === key);
     let currentSorter = null;
@@ -41,14 +48,14 @@ function useTableFiltersAndSorters<T>(): TableFiltersAndSorters {
       copyOfSorters.push(currentSorter);
     }
     setSorters(copyOfSorters);
-    return sort<T>(currentSorter, data);
+    return sort(currentSorter, data);
   }
 
-  function sort<T>(currentSorter: ISorter, data: T[]) {
+  function sort(currentSorter: ISorter, data: TableDataType[]) {
     if (!data.length) return [];
-    const keyOfT = currentSorter.key as keyof T;
+    const keyOfT = currentSorter.key as keyof TableDataType;
     const valueType = typeof data[0][keyOfT];
-    return data.sort((a: T, b: T) => {
+    const sortedData = data.sort((a: TableDataType, b: TableDataType) => {
       const aValue = a[keyOfT] as string;
       const bValue = b[keyOfT] as string;
       if (valueType == "object" && currentSorter.key.includes("date")) {
@@ -67,6 +74,7 @@ function useTableFiltersAndSorters<T>(): TableFiltersAndSorters {
           : bValue.localeCompare(aValue);
       }
     });
+    setData(sortedData);
   }
 
   return {
