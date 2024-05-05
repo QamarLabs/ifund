@@ -12,6 +12,8 @@ interface TableFiltersAndSorters<TableDataType> {
   filters: IFilter[];
   setFilters: React.Dispatch<IFilter[]>;
   handleSort: (key: string, data: TableDataType[]) => void | TableDataType[];
+  clickedColumn: string | undefined;
+  setClickedColumn: React.Dispatch<string>;
 }
 export interface DistinctTableFilters {
   distinctFilters: {key: string, distinctValues: string[]}[];
@@ -24,6 +26,7 @@ function useTableFiltersAndSorters<TableDataType>(
   // Pass  initial state function to useState so logic is only executed once
   const [sorters, setSorters] = useState<ISorter[]>([]);
   const [filters, setFilters] = useState<IFilter[]>([]);
+  const [clickedColumn, setClickedColumn] = useState<string>();
 
 
   function handleSort(key: string, data: TableDataType[]) {
@@ -83,6 +86,8 @@ function useTableFiltersAndSorters<TableDataType>(
     filters,
     setFilters,
     handleSort,
+    clickedColumn,
+    setClickedColumn
   };
 }
 

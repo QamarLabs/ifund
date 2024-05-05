@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Card } from "@tremor/react";
 import RecentActivityTable from "./RecentActivityTable";
 import {
   Accordion,
+  Filter,
   IFilter,
   ISorter,
   SortDirection,
@@ -10,8 +11,10 @@ import {
   formatCurrency,
 } from "./CommonTableComponents";
 import { IRecentActivityItem } from "../Cards/DataCard";
-import { Check, X } from "lucide-react";
-import useTableFiltersAndSorters, { DistinctTableFilters } from "@/hooks/useTableFiltersAndSorters";
+import { Check, X, FilterIcon } from "lucide-react";
+import useTableFiltersAndSorters, {
+  DistinctTableFilters,
+} from "@/hooks/useTableFiltersAndSorters";
 
 export interface ICostBreakdown {
   description: string;
@@ -46,26 +49,34 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
   const [openAccordionIndex, setOpenAccordionIndex] = useState<number | null>(
     null,
   );
-  const [distinctFilters, setDistinctFilters] = useState<{[key: string]: any[]}>();
+  const [distinctFilters, setDistinctFilters] = useState<{
+    [key: string]: any[];
+  }>();
 
-  const { handleSort, sorters } = useTableFiltersAndSorters<IBusinessItem>(setBusinesses);
+  const { handleSort, sorters, clickedColumn, setClickedColumn } =
+    useTableFiltersAndSorters<IBusinessItem>(setBusinesses);
 
-  useEffect(
-    () => {
-      if(businesses) {
-        const obj = {};
-        const distinctFiltersObj:  {[key: string]: any[]} = {};
-        Object.keys(businesses[0]).forEach(bk => {
-          distinctFiltersObj[bk] = [];
-        });
-        businesses.forEach((b: IBusinessItem) => {
-          Object.keys(b).forEach(bk => distinctFiltersObj[bk] = Array.from(new Set([ ...distinctFiltersObj[bk], b[bk as keyof IBusinessItem] ])));
-        });
-        setDistinctFilters(distinctFiltersObj);
-      }
-    },
-    [businesses]
-  );
+  useLayoutEffect(() => {
+    if (businesses) {
+      const obj = {};
+      const distinctFiltersObj: { [key: string]: any[] } = {};
+      Object.keys(businesses[0]).forEach((bk) => {
+        distinctFiltersObj[bk] = [];
+      });
+      businesses.forEach((b: IBusinessItem) => {
+        Object.keys(b).forEach(
+          (bk) =>
+            (distinctFiltersObj[bk] = Array.from(
+              new Set([
+                ...distinctFiltersObj[bk],
+                b[bk as keyof IBusinessItem],
+              ]),
+            )),
+        );
+      });
+      setDistinctFilters(distinctFiltersObj);
+    }
+  }, [businesses]);
 
   return (
     <Card className="col-span-12">
@@ -81,6 +92,23 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
                 <div className="flex">
                   <span>Name</span>
                   <SortInd sorters={sorters} sKey="name" />
+                  <FilterIcon
+                    className="text-gray-400 hover:text-gray-600 cursor-pointer"
+                    onClick={() =>
+                      clickedColumn !== "name"
+                        ? setClickedColumn("name")
+                        : setClickedColumn("")
+                    }
+                  />
+                  {clickedColumn === "name" && (
+                    <Filter
+                      label="Name"
+                      distinctFilters={
+                        distinctFilters ? distinctFilters["name"] : []
+                      }
+                      handleFilterChange={() => {}}
+                    />
+                  )}
                 </div>
               </th>
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
@@ -88,24 +116,56 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
               </th>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() =>
-                  handleSort("formationDate", businesses)
-                }
+                onClick={() => handleSort("formationDate", businesses)}
               >
                 <div className="flex">
                   <span>Formation Date</span>
                   <SortInd sorters={sorters} sKey="formationDate" />
+                  <FilterIcon
+                    className="text-gray-400 hover:text-gray-600 cursor-pointer"
+                    onClick={() =>
+                      clickedColumn !== "formationDate"
+                        ? setClickedColumn("formationDate")
+                        : setClickedColumn("")
+                    }
+                  />
+                  {clickedColumn === "formationDate" && (
+                    <Filter
+                      label="Formation Date"
+                      distinctFilters={
+                        distinctFilters ? distinctFilters["formationDate"] : []
+                      }
+                      handleFilterChange={() => {}}
+                    />
+                  )}
                 </div>
               </th>
               <th
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                onClick={() =>
-                  handleSort("totalAmountRaised", businesses)
-                }
+                onClick={() => handleSort("totalAmountRaised", businesses)}
               >
                 <div className="flex">
                   <span>Total Raised</span>
                   <SortInd sorters={sorters} sKey="totalAmountRaised" />
+                  <FilterIcon
+                    className="text-gray-400 hover:text-gray-600 cursor-pointer"
+                    onClick={() =>
+                      clickedColumn !== "totalAmountRaised"
+                        ? setClickedColumn("totalAmountRaised")
+                        : setClickedColumn("")
+                    }
+                  />
+                  {clickedColumn === "totalAmountRaised" && (
+                    <Filter
+                      label="Total Amount Raised"
+                      distinctFilters={
+                        distinctFilters
+                          ? distinctFilters["totalAmountRaised"]
+                          : []
+                      }
+                      handleFilterChange={() => {}}
+                    />
+                  )}
                 </div>
               </th>
               <th className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
