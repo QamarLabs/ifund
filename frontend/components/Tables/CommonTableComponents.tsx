@@ -69,26 +69,34 @@ export const Filter = ({
   distinctFilters,
   handleFilterChange,
 }: FilterProps) => {
-  const handleInputChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     // handleFilterChange(key, e.target.value);
   };
 
   if (distinctFilters) {
     return (
-      <div className="absolute inset-x-0 bottom-full bg-white shadow-lg rounded-lg p-4 z-10">
+      <div className="absolute left-0 bg-white p-4 shadow-lg">
         <div>
-          <label className="text-gray-700 text-sm font-medium">{label}</label>
-          <select
-            onChange={(e) => handleInputChange(e)}
-            className="border-gray-300 mt-1 block w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-          >
-            <option value="">All</option>
-            {distinctFilters.map((option: any, index: number) => (
-              <option key={index} value={option}>
+          <label className="text-sm font-bold text-islamic-green underline whitespace-nowrap">
+            {label}
+          </label>
+          {distinctFilters.map((option: any, index: number) => (
+            <div key={index} className="mt-1 flex items-center">
+              <input
+                type="checkbox"
+                id={`${label.toLocaleLowerCase()}-filter-${index}`}
+                value={option}
+                onChange={(e) => handleInputChange(e)}
+                className="mr-2"
+              />
+              <label
+                htmlFor={`${label.toLocaleLowerCase()}-filter-${index}`}
+                className="whitespace-nowrap p-1"
+              >
                 {option}
-              </option>
-            ))}
-          </select>
+              </label>
+            </div>
+          ))}
         </div>
       </div>
     );

@@ -69,7 +69,12 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
             (distinctFiltersObj[bk] = Array.from(
               new Set([
                 ...distinctFiltersObj[bk],
-                b[bk as keyof IBusinessItem],
+                !isNaN(parseFloat(b[bk as keyof IBusinessItem].toString()))
+                  ? new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(parseInt(b[bk as keyof IBusinessItem].toString()))
+                  : b[bk as keyof IBusinessItem],
               ]),
             )),
         );
@@ -77,6 +82,14 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
       setDistinctFilters(distinctFiltersObj);
     }
   }, [businesses]);
+
+  const openFilter = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    fKey: string,
+  ) => {
+    e.stopPropagation();
+    clickedColumn !== fKey ? setClickedColumn(fKey) : setClickedColumn("");
+  };
 
   return (
     <Card className="col-span-12">
@@ -86,19 +99,15 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
               <th
-                className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                className="text-gray-500 relative px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 onClick={() => handleSort("name", businesses)}
               >
-                <div className="flex">
+                <div className="relative flex">
                   <span>Name</span>
                   <SortInd sorters={sorters} sKey="name" />
                   <FilterIcon
                     className="text-gray-400 hover:text-gray-600 cursor-pointer"
-                    onClick={() =>
-                      clickedColumn !== "name"
-                        ? setClickedColumn("name")
-                        : setClickedColumn("")
-                    }
+                    onClick={(e) => openFilter(e, "name")}
                   />
                   {clickedColumn === "name" && (
                     <Filter
@@ -115,19 +124,15 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
                 Description
               </th>
               <th
-                className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                className="text-gray-500 relative px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 onClick={() => handleSort("formationDate", businesses)}
               >
-                <div className="flex">
+                <div className="relative flex">
                   <span>Formation Date</span>
                   <SortInd sorters={sorters} sKey="formationDate" />
                   <FilterIcon
                     className="text-gray-400 hover:text-gray-600 cursor-pointer"
-                    onClick={() =>
-                      clickedColumn !== "formationDate"
-                        ? setClickedColumn("formationDate")
-                        : setClickedColumn("")
-                    }
+                    onClick={(e) => openFilter(e, "formationDate")}
                   />
                   {clickedColumn === "formationDate" && (
                     <Filter
@@ -144,16 +149,12 @@ const BusinessesTable: React.FC<BusinessTableProps> = ({
                 className="text-gray-500 px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 onClick={() => handleSort("totalAmountRaised", businesses)}
               >
-                <div className="flex">
+                <div className="relative flex">
                   <span>Total Raised</span>
                   <SortInd sorters={sorters} sKey="totalAmountRaised" />
                   <FilterIcon
                     className="text-gray-400 hover:text-gray-600 cursor-pointer"
-                    onClick={() =>
-                      clickedColumn !== "totalAmountRaised"
-                        ? setClickedColumn("totalAmountRaised")
-                        : setClickedColumn("")
-                    }
+                    onClick={(e) => openFilter(e, "totalAmountRaised")}
                   />
                   {clickedColumn === "totalAmountRaised" && (
                     <Filter

@@ -95,6 +95,7 @@ module.exports = {
         success: "#219653",
         danger: "#D34053",
         warning: "#FFA70B",
+        'islamic-green': '#009900', // Define Islamic Green color with hex code
         // light mode
         tremor: {
           brand: {
